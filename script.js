@@ -91,22 +91,12 @@ window.addEventListener("scroll", () => {
 // =========================
 
 const poster = document.getElementById("videoPoster");
-const video = document.getElementById("videoDocumentario");
+const iframe = document.getElementById("videoDocumentario");
 
 poster.addEventListener("click", () => {
 
     poster.classList.add("hide");
 
-    video.play();
-
-});
-
-video.addEventListener("pause", () => {
-
-    if(video.currentTime === 0){
-
-        poster.classList.remove("hide");
-
-    }
+    iframe.src = iframe.dataset.src;
 
 });
