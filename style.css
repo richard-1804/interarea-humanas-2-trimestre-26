@@ -221,9 +221,9 @@ a {
   max-width: 850px;
 
   font-family: var(--serif);
-  font-size: clamp(58px, 9vw, 145px);
+  font-size: clamp(58px, 7vw, 145px);
   font-weight: 500;
-  line-height: 0.92;
+  line-height: 1.05;
   letter-spacing: -0.06em;
 }
 
@@ -519,12 +519,13 @@ blockquote {
 
   display: grid;
   grid-template-columns: 1fr 120px 1fr;
+  align-items: stretch; 
 
   color: var(--white);
 }
 
 .confrontation-side {
-  padding: 100px 8vw;
+  padding: 100px clamp(20px, 5vw, 80px);
 
   display: flex;
   flex-direction: column;
@@ -550,8 +551,9 @@ blockquote {
   margin-bottom: 35px;
 
   font-family: var(--serif);
-  font-size: clamp(44px, 6vw, 90px);
+  font-size: clamp(44px, 5vw, 90px);
   font-weight: 500;
+
 }
 
 .confrontation-side p {
@@ -573,6 +575,55 @@ blockquote {
 .confrontation-center span {
   font-family: var(--serif);
   font-size: 24px;
+}
+
+/* ==========================
+   TELA DE REFLEXÃO
+========================== */
+
+.reflection-screen {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  padding: 120px 10%;
+  background: #0e1113;
+  color: #ffffff;
+}
+
+.reflection-content {
+  max-width: 900px;
+}
+
+.reflection-number {
+  display: block;
+  color: #8c8c8c;
+  letter-spacing: 0.35em;
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+}
+
+.reflection-small {
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #b5b5b5;
+  margin-bottom: 45px;
+}
+
+.reflection-content h2 {
+  font-size: clamp(2.3rem, 5vw, 5rem);
+  line-height: 1.35;
+  font-weight: 300;
+  margin-bottom: 50px;
+}
+
+.reflection-content p {
+  color: #c9c9c9;
+  font-size: 1.1rem;
+  line-height: 1.8;
 }
 
 /* =========================
@@ -761,7 +812,7 @@ blockquote {
   justify-content: space-between;
   gap: 80px;
 
-  padding-bottom: 90px;
+  padding-bottom: 60px;
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 }
@@ -804,8 +855,36 @@ blockquote {
   font-family: var(--serif);
   font-size: 45px;
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.1;
 }
+
+#download {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 60px 0 0 0;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+#download:hover {
+  transform: translateY(-2px);
+}
+
+#download-row { margin-bottom: 0; }
+
+#download-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  height: 22px;
+
+  border: 1px solid var(--white); 
+  border-radius: 50%; 
+}
+
 
 .footer-members {
   padding: 60px 0;
@@ -1020,6 +1099,10 @@ blockquote {
 
   .footer-project {
     margin-top: 60px;
+  }
+
+  #download {
+    margin: 60px 0 0 0;
   }
 
   .members-list {
