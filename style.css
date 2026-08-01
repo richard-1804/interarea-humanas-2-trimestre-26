@@ -796,6 +796,55 @@ blockquote {
   line-height: 1.85;
 }
 
+/* =======================================
+   MENSAGEM FINAL
+======================================= */
+
+.final-message {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 120px 10%;
+  background: #f7f5f1;
+  text-align: center;
+}
+
+.final-message-content {
+  max-width: 900px;
+}
+
+.final-small {
+  font-size: 0.85rem;
+  letter-spacing: 6px;
+  color: #7b6d5d;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+.final-message h2 {
+  font-size: clamp(2rem, 4vw, 4.5rem);
+  line-height: 1.45;
+  font-weight: 300;
+  color: #1d1d1d;
+}
+
+.final-line {
+  width: 120px;
+  height: 2px;
+  background: #b9925c;
+  margin: 70px auto 40px;
+}
+
+.final-credit {
+  color: #666;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
 /* =========================
    FOOTER
 ========================= */
@@ -885,7 +934,6 @@ blockquote {
 
   border: 1px solid var(--white);
   border-radius: 50%;
-
 }
 
 .footer-members {
