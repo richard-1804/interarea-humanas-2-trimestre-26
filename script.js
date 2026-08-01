@@ -32,6 +32,30 @@ document.querySelectorAll(".main-nav a").forEach((link) => {
     });
 });
 
+// =========================
+// FECHAR MENU AO CLICAR FORA
+// =========================
+
+document.addEventListener("click", (event) => {
+
+    const clicouNoMenu = mainNav.contains(event.target);
+    const clicouNoBotao = menuToggle.contains(event.target);
+
+    if (
+        mainNav.classList.contains("active") &&
+        !clicouNoMenu &&
+        !clicouNoBotao
+    ) {
+
+        mainNav.classList.remove("active");
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "Abrir menu"
+        );
+    }
+
+});
 
 // =========================
 // ANIMAÇÕES AO ROLAR A PÁGINA
