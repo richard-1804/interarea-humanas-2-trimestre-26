@@ -728,8 +728,8 @@ blockquote {
   border: none;
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(3px);
   color: #fff;
 
   font-size: 34px;
@@ -741,7 +741,41 @@ blockquote {
 .play-button:hover {
   transform: translate(-50%, -50%) scale(1.08);
 
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ========================= */
+/* LOADING DO DOCUMENTÁRIO */
+/* ========================= */
+
+.loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 70px;
+  height: 70px;
+
+  margin: -35px 0 0 -35px;
+
+  border: 5px solid rgba(255, 255, 255, 0.25);
+  border-top-color: #fff;
+  border-radius: 50%;
+
+  display: none;
+  z-index: 7;
+
+  animation: spinner-rotate 0.9s linear infinite;
+}
+
+.loading-spinner.show {
+  display: block;
+}
+
+@keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .documentary-caption {

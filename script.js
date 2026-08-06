@@ -6,30 +6,23 @@ const menuToggle = document.querySelector(".menu-toggle");
 const mainNav = document.querySelector(".main-nav");
 
 menuToggle.addEventListener("click", () => {
-    mainNav.classList.toggle("active");
+  mainNav.classList.toggle("active");
 
-    const isOpen = mainNav.classList.contains("active");
+  const isOpen = mainNav.classList.contains("active");
 
-    menuToggle.setAttribute(
-        "aria-label",
-        isOpen ? "Fechar menu" : "Abrir menu"
-    );
+  menuToggle.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
 });
-
 
 // =========================
 // FECHAR MENU AO CLICAR EM UM LINK
 // =========================
 
 document.querySelectorAll(".main-nav a").forEach((link) => {
-    link.addEventListener("click", () => {
-        mainNav.classList.remove("active");
+  link.addEventListener("click", () => {
+    mainNav.classList.remove("active");
 
-        menuToggle.setAttribute(
-            "aria-label",
-            "Abrir menu"
-        );
-    });
+    menuToggle.setAttribute("aria-label", "Abrir menu");
+  });
 });
 
 // =========================
@@ -37,24 +30,14 @@ document.querySelectorAll(".main-nav a").forEach((link) => {
 // =========================
 
 document.addEventListener("click", (event) => {
+  const clicouNoMenu = mainNav.contains(event.target);
+  const clicouNoBotao = menuToggle.contains(event.target);
 
-    const clicouNoMenu = mainNav.contains(event.target);
-    const clicouNoBotao = menuToggle.contains(event.target);
+  if (mainNav.classList.contains("active") && !clicouNoMenu && !clicouNoBotao) {
+    mainNav.classList.remove("active");
 
-    if (
-        mainNav.classList.contains("active") &&
-        !clicouNoMenu &&
-        !clicouNoBotao
-    ) {
-
-        mainNav.classList.remove("active");
-
-        menuToggle.setAttribute(
-            "aria-label",
-            "Abrir menu"
-        );
-    }
-
+    menuToggle.setAttribute("aria-label", "Abrir menu");
+  }
 });
 
 // =========================
@@ -62,33 +45,28 @@ document.addEventListener("click", (event) => {
 // =========================
 
 const animatedElements = document.querySelectorAll(
-    ".section-heading, .text-column, .photo-story, .quote-large, .final-content"
+  ".section-heading, .text-column, .photo-story, .quote-large, .final-content",
 );
 
 const observer = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry) => {
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
 
-            if (entry.isIntersecting) {
-
-                entry.target.classList.add("is-visible");
-
-                observer.unobserve(entry.target);
-            }
-
-        });
-    },
-    {
-        threshold: 0.15
-    }
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.15,
+  },
 );
-
 
 // Observa cada elemento que deve aparecer suavemente
 animatedElements.forEach((element) => {
-    observer.observe(element);
+  observer.observe(element);
 });
-
 
 // =========================
 // EFEITO NO HEADER AO ROLAR
@@ -97,17 +75,11 @@ animatedElements.forEach((element) => {
 const header = document.querySelector(".site-header");
 
 window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 80) {
-
-        header.classList.add("scrolled");
-
-    } else {
-
-        header.classList.remove("scrolled");
-
-    }
-
+  if (window.scrollY > 80) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
 });
 
 // =========================
@@ -116,11 +88,25 @@ window.addEventListener("scroll", () => {
 
 const poster = document.getElementById("videoPoster");
 const iframe = document.getElementById("videoDocumentario");
+const playButton = document.getElementById("playButton");
+const spinner = document.getElementById("loadingSpinner");
+
+let carregando = false;
 
 poster.addEventListener("click", () => {
+  if (carregando) return;
 
-    poster.classList.add("hide");
+  carregando = true;
 
-    iframe.src = iframe.dataset.src;
+  playButton.style.display = "none";
 
+  spinner.classList.add("show");
+
+  iframe.src = iframe.dataset.src;
+});
+
+iframe.addEventListener("load", () => {
+  spinner.classList.remove("show");
+
+  poster.classList.add("hide");
 });
